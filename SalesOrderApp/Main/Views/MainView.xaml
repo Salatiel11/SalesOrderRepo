@@ -1,0 +1,72 @@
+﻿<Window x:Class="SalesOrderApp.Main.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="Sales Order Management" Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- AppBar estilo Material Design -->
+        <materialDesign:ColorZone Mode="PrimaryDark" Grid.Row="0" Padding="16 8">
+            <DockPanel>
+                <TextBlock Text="Sales Order Management" 
+                           Style="{StaticResource MaterialDesignTitleTextBlock}"
+                           VerticalAlignment="Center"
+                           Margin="16 0"/>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <!-- Botones con texto e íconos -->
+                    <Button Command="{Binding NavigateCommand}" 
+                            CommandParameter="CustomerListView"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Customers"
+                            Margin="8 0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountGroup" Width="20" Height="20" Margin="0 0 8 0"/>
+                            <TextBlock Text="Customers" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding NavigateCommand}" 
+                            CommandParameter="ProductListView"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Products"
+                            Margin="8 0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PackageVariant" Width="20" Height="20" Margin="0 0 8 0"/>
+                            <TextBlock Text="Products" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding NavigateCommand}" 
+                            CommandParameter="SalesOrderListView"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Sales Orders"
+                            Margin="8 0">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ClipboardList" Width="20" Height="20" Margin="0 0 8 0"/>
+                            <TextBlock Text="Sales" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <!-- Contenido principal -->
+        <Border Grid.Row="1" 
+                Margin="16"
+                CornerRadius="4"
+                Background="{DynamicResource MaterialDesignCardBackground}">
+            <ContentControl prism:RegionManager.RegionName="MainContentRegion"
+                           Margin="8"/>
+        </Border>
+    </Grid>
+</Window>
