@@ -1,4 +1,4 @@
-#Database Configuration 
+# Database Configuration 
 At App.xaml.cs
  optionsBuilder.UseSqlServer("Server=serverName;Database=SalesOrderDB;Integrated Security=True;TrustServerCertificate=True;");
 
